@@ -1,0 +1,10 @@
+import org.drools.process.core.datatype.impl.type.StringDataType;
+[
+  [
+    "name" : "Camel Service",
+    "parameters" : [
+      "routeName" : new StringDataType()
+    ],
+    "displayName" : "Camel Service"
+  ]
+]
