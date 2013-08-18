@@ -13,22 +13,26 @@
              xmlns:tns="http://www.jboss.org/drools">
 
   <itemDefinition id="_toItem" structureRef="String" />
+  <itemDefinition id="_payloadItem" structureRef="String" />
 
   <process processType="Private" isExecutable="true" id="test.camelHandler" name="Testing the camel handler" tns:packageName="com.example.CamelHandler" >
 
     <!-- process variables -->
     <property id="to" itemSubjectRef="_toItem"/>
+    <property id="payload" itemSubjectRef="_payloadItem"/>
 
     <!-- nodes -->
-    <startEvent id="_1" name="StartProcess" />
+    <startEvent id="_1" name="StartProcess"  isInterrupting="true"/>
     <endEvent id="_3" name="EndProcess" >
         <terminateEventDefinition />
     </endEvent>
     <task id="_4" name="Camel Service" tns:taskName="Camel Service" >
       <ioSpecification>
         <dataInput id="_4_toInput" name="to" />
+        <dataInput id="_4_payloadInput" name="payload" />
         <inputSet>
           <dataInputRefs>_4_toInput</dataInputRefs>
+          <dataInputRefs>_4_payloadInput</dataInputRefs>
         </inputSet>
         <outputSet>
         </outputSet>
@@ -36,6 +40,10 @@
       <dataInputAssociation>
         <sourceRef>to</sourceRef>
         <targetRef>_4_toInput</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <sourceRef>payload</sourceRef>
+        <targetRef>_4_payloadInput</targetRef>
       </dataInputAssociation>
     </task>
 
@@ -48,21 +56,21 @@
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="test.camelHandler" >
       <bpmndi:BPMNShape bpmnElement="_1" >
-        <dc:Bounds x="18" y="119" width="48" height="48" />
+        <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="356" y="122" width="48" height="48" />
+        <dc:Bounds x="298" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" >
-        <dc:Bounds x="124" y="120" width="170" height="48" />
+        <dc:Bounds x="96" y="16" width="170" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_4-_3" >
-        <di:waypoint x="209" y="144" />
-        <di:waypoint x="380" y="146" />
+        <di:waypoint x="181" y="40" />
+        <di:waypoint x="322" y="40" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_1-_4" >
-        <di:waypoint x="42" y="143" />
-        <di:waypoint x="209" y="144" />
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="181" y="40" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

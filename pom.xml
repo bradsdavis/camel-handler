@@ -8,30 +8,42 @@
 	<name>CamelHandler</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<drools.version>5.4.0.Final</drools.version>
-		<jbpm5.version>5.4.0.Final</jbpm5.version>
+		<drools.version>6.0.0.CR1</drools.version>
+		<jbpm.version>6.0.0.CR1</jbpm.version>
 		<junit.version>4.8.1</junit.version>
+		<camel.version>2.11.1</camel.version>
 	</properties>
 	<dependencies>
-	        <dependency>
-                        <groupId>junit</groupId>
-                        <artifactId>junit</artifactId>
-                        <version>${junit.version}</version>
-                </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-flow</artifactId>
-			<version>${jbpm5.version}</version>
+			<version>${jbpm.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-bpmn2</artifactId>
-			<version>${jbpm5.version}</version>
+			<version>${jbpm.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-flow-builder</artifactId>
-			<version>${jbpm5.version}</version>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.5</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>

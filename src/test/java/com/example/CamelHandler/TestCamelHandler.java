@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
-import org.drools.KnowledgeBase;
-import org.drools.builder.KnowledgeBuilder;
-import org.drools.builder.KnowledgeBuilderFactory;
-import org.drools.builder.ResourceType;
-import org.drools.io.ResourceFactory;
-import org.drools.runtime.StatefulKnowledgeSession;
-import org.drools.runtime.process.ProcessInstance;
+import org.jbpm.process.instance.ProcessInstance;
 import org.junit.Test;
+import org.kie.api.KieBase;
+import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.KieSession;
+import org.kie.internal.builder.KnowledgeBuilder;
+import org.kie.internal.builder.KnowledgeBuilderFactory;
+import org.kie.internal.io.ResourceFactory;
 
 public class TestCamelHandler {
 
@@ -20,14 +20,15 @@ public class TestCamelHandler {
 		//Create a knowledge session and register the Camel Service handler to it
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
 		kbuilder.add(ResourceFactory.newClassPathResource("handler-test.bpmn"), ResourceType.BPMN2);
-		KnowledgeBase kbase = kbuilder.newKnowledgeBase();
-		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
+		KieBase kbase = kbuilder.newKnowledgeBase();
+		KieSession ksession = kbase.newKieSession();
 		ksession.getWorkItemManager().registerWorkItemHandler("Camel Service", new CamelServiceWorkItemHandler());
 		
 		//Set-up the process instance
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put("to", "ftp:camel");
-		ProcessInstance processInstance = ksession.createProcessInstance("test.camelHandler", params);
+		params.put("to", "file:///tmp/output?fileName=text.txt");
+		params.put("payload", "testing!!!");
+		org.kie.api.runtime.process.ProcessInstance processInstance = ksession.startProcess("test.camelHandler", params);
 		
 		//Make sure everything is read to fire
 		assertEquals(ProcessInstance.STATE_PENDING, processInstance.getState());
