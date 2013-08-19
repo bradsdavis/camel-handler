@@ -5,6 +5,7 @@ import org.jbpm.process.workitem.camel.request.RequestPayloadMapper;
 import org.jbpm.process.workitem.camel.uri.CXFURIMapper;
 import org.jbpm.process.workitem.camel.uri.FTPURIMapper;
 import org.jbpm.process.workitem.camel.uri.FileURIMapper;
+import org.jbpm.process.workitem.camel.uri.GenericURIMapper;
 import org.jbpm.process.workitem.camel.uri.JMSURIMapper;
 import org.jbpm.process.workitem.camel.uri.SQLURIMapper;
 import org.jbpm.process.workitem.camel.uri.XSLTURIMapper;
@@ -42,4 +43,9 @@ public class CamelHandlerFactory {
 	public static CamelHandler sqlHandler() {
 		return new CamelHandler(new SQLURIMapper(), new RequestPayloadMapper("payload"));
 	}
+	
+	public static CamelHandler genericHandler(String schema, String pathLocation) {
+		return new CamelHandler(new GenericURIMapper(schema, pathLocation), new RequestPayloadMapper("payload"));
+	}
+	
 }

@@ -58,29 +58,29 @@
     </task>
     <task id="_5" name="File" tns:taskName="File" >
       <ioSpecification>
-        <dataInput id="_5_pathInput" name="path" />
         <dataInput id="_5_fileNameInput" name="fileName" />
+        <dataInput id="_5_pathInput" name="path" />
         <dataInput id="_5_payloadInput" name="payload" />
         <inputSet>
-          <dataInputRefs>_5_pathInput</dataInputRefs>
           <dataInputRefs>_5_fileNameInput</dataInputRefs>
+          <dataInputRefs>_5_pathInput</dataInputRefs>
           <dataInputRefs>_5_payloadInput</dataInputRefs>
         </inputSet>
         <outputSet>
         </outputSet>
       </ioSpecification>
       <dataInputAssociation>
-        <targetRef>_5_pathInput</targetRef>
-        <assignment>
-          <from xsi:type="tFormalExpression">/tmp</from>
-          <to xsi:type="tFormalExpression">_5_pathInput</to>
-        </assignment>
-      </dataInputAssociation>
-      <dataInputAssociation>
         <targetRef>_5_fileNameInput</targetRef>
         <assignment>
           <from xsi:type="tFormalExpression">test.txt</from>
           <to xsi:type="tFormalExpression">_5_fileNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_5_pathInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">/tmp</from>
+          <to xsi:type="tFormalExpression">_5_pathInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
