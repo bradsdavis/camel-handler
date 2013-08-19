@@ -11,19 +11,19 @@ import org.jbpm.process.workitem.camel.uri.XSLTURIMapper;
 public class CamelHandlerFactory {
 	
 	public static CamelHandler sftpHandler() {
-		return new CamelHandler(new FTPURIMapper("sftp"));
+		return new CamelHandler(new FTPURIMapper("sftp"), new RequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler ftpHandler() {
-		return new CamelHandler(new FTPURIMapper("ftp"));
+		return new CamelHandler(new FTPURIMapper("ftp"), new RequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler ftpsHandler() {
-		return new CamelHandler(new FTPURIMapper("ftps"));
+		return new CamelHandler(new FTPURIMapper("ftps"), new RequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler cxfHandler() {
-		return new CamelHandler(new CXFURIMapper());
+		return new CamelHandler(new CXFURIMapper(), new RequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler fileHandler() {
@@ -35,10 +35,10 @@ public class CamelHandlerFactory {
 	}
 	
 	public static CamelHandler jmsHandler() {
-		return new CamelHandler(new JMSURIMapper());
+		return new CamelHandler(new JMSURIMapper(), new RequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler sqlHandler() {
-		return new CamelHandler(new SQLURIMapper());
+		return new CamelHandler(new SQLURIMapper(), new RequestPayloadMapper("payload"));
 	}
 }
