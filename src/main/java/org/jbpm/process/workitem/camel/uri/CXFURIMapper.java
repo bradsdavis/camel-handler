@@ -18,7 +18,5 @@ public class CXFURIMapper extends URIMapper {
 
 		String path = address;
 		return prepareCamelUri(path, options);
-	}
-
-	
+	} 
 }

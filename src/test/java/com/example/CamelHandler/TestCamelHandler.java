@@ -30,6 +30,7 @@ public class TestCamelHandler {
 
 		ksession.getWorkItemManager().registerWorkItemHandler("File", CamelHandlerFactory.fileHandler());
 		ksession.getWorkItemManager().registerWorkItemHandler("XSLT", CamelHandlerFactory.xsltHandler());
+		ksession.getWorkItemManager().registerWorkItemHandler("SFTP", CamelHandlerFactory.sftpHandler());
 		
 		//Set-up the process instance
 		HashMap<String, Object> params = new HashMap<String, Object>();
