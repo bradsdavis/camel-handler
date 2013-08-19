@@ -1,6 +1,6 @@
 package org.jbpm.process.workitem.camel;
 
-import org.jbpm.process.workitem.camel.processor.RequestPayloadMapper;
+import org.jbpm.process.workitem.camel.request.RequestPayloadMapper;
 import org.jbpm.process.workitem.camel.uri.CXFURIMapper;
 import org.jbpm.process.workitem.camel.uri.FTPURIMapper;
 import org.jbpm.process.workitem.camel.uri.FileURIMapper;

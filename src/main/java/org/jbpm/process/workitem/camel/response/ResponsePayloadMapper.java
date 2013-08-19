@@ -1,4 +1,4 @@
-package org.jbpm.process.workitem.camel.processor;
+package org.jbpm.process.workitem.camel.response;
 
 import org.apache.camel.Exchange;
 import org.kie.api.runtime.process.WorkItem;

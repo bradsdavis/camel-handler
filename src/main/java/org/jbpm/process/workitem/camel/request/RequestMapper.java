@@ -1,4 +1,4 @@
-package org.jbpm.process.workitem.camel.processor;
+package org.jbpm.process.workitem.camel.request;
 
 import org.apache.camel.Processor;
 import org.kie.api.runtime.process.WorkItem;
