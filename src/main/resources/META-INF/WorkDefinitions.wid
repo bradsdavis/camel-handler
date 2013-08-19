@@ -70,6 +70,9 @@ import org.drools.core.process.core.datatype.impl.type.StringDataType;
     "parameters" : [
       "payload" : new StringDataType(),
       "address" : new StringDataType(),
+      "serviceClass" : new StringDataType(),
+      "serviceName" : new StringDataType(),
+      "portName" : new StringDataType()
     ],
     "category" : "Communication",
     "displayName" : "CXF",

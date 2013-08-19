@@ -11,6 +11,7 @@
 		<drools.version>6.0.0.CR1</drools.version>
 		<jbpm.version>6.0.0.CR1</jbpm.version>
 		<junit.version>4.8.1</junit.version>
+  		<cxf.version>2.2.3</cxf.version>
 		<camel.version>2.11.1</camel.version>
 	</properties>
 	<dependencies>
@@ -45,26 +46,32 @@
 			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.camel</groupId>
-		    <artifactId>camel-aws</artifactId>
-		    <version>${camel.version}</version>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-aws</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.camel</groupId>
-		    <artifactId>camel-cxf</artifactId>
-		    <version>${camel.version}</version>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.camel</groupId>
-		    <artifactId>camel-sql</artifactId>
-		    <version>${camel.version}</version>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-sql</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.7.5</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>simplecustomer</groupId>
+			<artifactId>simplecustomer</artifactId>
+			<version>1.0</version>
+			<type>war</type>
 		</dependency>
 	</dependencies>
 	<build>
@@ -76,6 +83,28 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>http://simplecustomer-windup.rhcloud.com/simplecustomer/customerservice?wsdl</wsdl>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
