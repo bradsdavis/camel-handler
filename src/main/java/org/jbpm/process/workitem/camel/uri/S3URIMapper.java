@@ -13,7 +13,7 @@ public class S3URIMapper extends URIMapper {
 	
 	@Override
 	public URI toURI(Map<String, Object> options) throws URISyntaxException {
-		String bucketName = (String) options.get("bucket-name");
+		String bucketName = (String) options.get("bucketName");
 		options.remove("bucketName");
 
 		String path = bucketName;
