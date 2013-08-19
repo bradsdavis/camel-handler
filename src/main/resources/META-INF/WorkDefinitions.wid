@@ -53,5 +53,15 @@ import org.drools.core.process.core.datatype.impl.type.StringDataType;
     "displayName" : "JMS",
     "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
   ],
+    [
+    "name" : "XSLT",
+    "parameters" : [
+      "payload" : new StringDataType(),
+      "templateName" : new StringDataType(),
+    ],
+    "category" : "Communication",
+    "displayName" : "XSLT",
+    "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
+  ],
   
 ]

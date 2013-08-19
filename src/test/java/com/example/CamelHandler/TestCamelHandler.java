@@ -29,6 +29,7 @@ public class TestCamelHandler {
 		KieSession ksession = kbase.newKieSession();
 
 		ksession.getWorkItemManager().registerWorkItemHandler("File", CamelHandlerFactory.fileHandler());
+		ksession.getWorkItemManager().registerWorkItemHandler("XSLT", CamelHandlerFactory.xsltHandler());
 		
 		//Set-up the process instance
 		HashMap<String, Object> params = new HashMap<String, Object>();

@@ -24,45 +24,78 @@
     <endEvent id="_3" name="EndProcess" >
         <terminateEventDefinition />
     </endEvent>
-    <task id="_4" name="File" tns:taskName="File" >
+    <task id="_4" name="XSLT" tns:taskName="XSLT" >
       <ioSpecification>
-        <dataInput id="_4_fileNameInput" name="fileName" />
-        <dataInput id="_4_pathInput" name="path" />
         <dataInput id="_4_payloadInput" name="payload" />
+        <dataInput id="_4_templateNameInput" name="templateName" />
+        <dataOutput id="_4_responseOutput" name="response" />
         <inputSet>
-          <dataInputRefs>_4_fileNameInput</dataInputRefs>
-          <dataInputRefs>_4_pathInput</dataInputRefs>
           <dataInputRefs>_4_payloadInput</dataInputRefs>
+          <dataInputRefs>_4_templateNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_4_responseOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_4_payloadInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">&lt;testing&gt;Testing&lt;/testing&gt;</from>
+          <to xsi:type="tFormalExpression">_4_payloadInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_4_templateNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">test.xsl</from>
+          <to xsi:type="tFormalExpression">_4_templateNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_4_responseOutput</sourceRef>
+        <targetRef>response</targetRef>
+      </dataOutputAssociation>
+    </task>
+    <task id="_5" name="File" tns:taskName="File" >
+      <ioSpecification>
+        <dataInput id="_5_pathInput" name="path" />
+        <dataInput id="_5_fileNameInput" name="fileName" />
+        <dataInput id="_5_payloadInput" name="payload" />
+        <inputSet>
+          <dataInputRefs>_5_pathInput</dataInputRefs>
+          <dataInputRefs>_5_fileNameInput</dataInputRefs>
+          <dataInputRefs>_5_payloadInput</dataInputRefs>
         </inputSet>
         <outputSet>
         </outputSet>
       </ioSpecification>
       <dataInputAssociation>
-        <targetRef>_4_fileNameInput</targetRef>
-        <assignment>
-          <from xsi:type="tFormalExpression">test.txt</from>
-          <to xsi:type="tFormalExpression">_4_fileNameInput</to>
-        </assignment>
-      </dataInputAssociation>
-      <dataInputAssociation>
-        <targetRef>_4_pathInput</targetRef>
+        <targetRef>_5_pathInput</targetRef>
         <assignment>
           <from xsi:type="tFormalExpression">/tmp</from>
-          <to xsi:type="tFormalExpression">_4_pathInput</to>
+          <to xsi:type="tFormalExpression">_5_pathInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
-        <targetRef>_4_payloadInput</targetRef>
+        <targetRef>_5_fileNameInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression">Testing 123.</from>
-          <to xsi:type="tFormalExpression">_4_payloadInput</to>
+          <from xsi:type="tFormalExpression">test.txt</from>
+          <to xsi:type="tFormalExpression">_5_fileNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_5_payloadInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Hello World!</from>
+          <to xsi:type="tFormalExpression">_5_payloadInput</to>
         </assignment>
       </dataInputAssociation>
     </task>
 
     <!-- connections -->
-    <sequenceFlow id="_4-_3" sourceRef="_4" targetRef="_3" />
+    <sequenceFlow id="_5-_3" sourceRef="_5" targetRef="_3" />
     <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+    <sequenceFlow id="_4-_5" sourceRef="_4" targetRef="_5" />
 
   </process>
 
@@ -72,18 +105,25 @@
         <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="228" y="16" width="48" height="48" />
+        <dc:Bounds x="360" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" >
         <dc:Bounds x="96" y="16" width="100" height="48" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="_4-_3" >
-        <di:waypoint x="146" y="40" />
-        <di:waypoint x="252" y="40" />
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="228" y="16" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_5-_3" >
+        <di:waypoint x="278" y="40" />
+        <di:waypoint x="384" y="40" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_1-_4" >
         <di:waypoint x="40" y="40" />
         <di:waypoint x="146" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4-_5" >
+        <di:waypoint x="146" y="40" />
+        <di:waypoint x="278" y="40" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
