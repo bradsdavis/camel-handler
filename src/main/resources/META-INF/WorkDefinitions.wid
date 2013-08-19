@@ -1,11 +1,57 @@
 import org.drools.core.process.core.datatype.impl.type.StringDataType;
 [
   [
-    "name" : "Camel Service",
+    "name" : "File",
     "parameters" : [
-      "to" : new StringDataType(),
-      "payload" : new StringDataType()
+      "path" : new StringDataType(),
+      "fileName" : new StringDataType(),
+      "payload" : new StringDataType(),
     ],
-    "displayName" : "Camel Service"
+    "category" : "Communication",
+    "defaultHandler" : "org.jbpm.process.workitem.camel.FileHandler",
+    "displayName" : "File",
+    "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
+  ],
+  [
+    "name" : "FTP",
+    "parameters" : [
+      "username" : new StringDataType(),
+      "hostname" : new StringDataType(),
+      "port" : new StringDataType(),
+      "payload" : new StringDataType(),
+      "disconnect" : new StringDataType()
+    ],
+    "category" : "Communication",
+    "defaultHandler" : "org.jbpm.process.workitem.camel.FTPHandler",
+    "displayName" : "FTP",
+    "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
   ]
+  ,
+  [
+    "name" : "SFTP",
+    "parameters" : [
+      "username" : new StringDataType(),
+      "hostname" : new StringDataType(),
+      "port" : new StringDataType(),
+      "payload" : new StringDataType(),
+      "password" : new StringDataType(),
+      "disconnect" : new StringDataType()
+    ],
+    "category" : "Communication",
+    "defaultHandler" : "org.jbpm.process.workitem.camel.SFTPHandler",
+    "displayName" : "SFTP",
+    "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
+  ],
+  [
+    "name" : "JMS",
+    "parameters" : [
+      "payload" : new StringDataType(),
+      "destinationName" : new StringDataType(),
+    ],
+    "category" : "Communication",
+    "defaultHandler" : "org.jbpm.process.workitem.camel.JMSHandler",
+    "displayName" : "JMS",
+    "customEditor" : "org.drools.eclipse.flow.common.editor.editpart.work.SampleCustomEditor"
+  ],
+  
 ]
