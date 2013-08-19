@@ -5,7 +5,6 @@ This project provides a Proof of Concept for the integration of Camel Components
 1. Concepts of Transactions
 2. Exception Management
 3. Scalability Considerations
-4. Request/Response Handling (the current example is Out only)
 
 Once the pattern is extended, jBPM Work Item Definitions would be created for relevant Camel components to allow for easy integration with the jBPM BPMN2 editor.  Some high priority shapes include:
 
