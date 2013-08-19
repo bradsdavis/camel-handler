@@ -18,8 +18,7 @@ import org.drools.core.process.core.datatype.impl.type.StringDataType;
       "username" : new StringDataType(),
       "hostname" : new StringDataType(),
       "port" : new StringDataType(),
-      "path" : new StringDataType(),
-      "fileName" : new StringDataType(),
+      "CamelFileName" : new StringDataType(),
       "payload" : new StringDataType(),
       "disconnect" : new StringDataType()
     ],
@@ -35,8 +34,7 @@ import org.drools.core.process.core.datatype.impl.type.StringDataType;
       "username" : new StringDataType(),
       "hostname" : new StringDataType(),
       "port" : new StringDataType(),
-      "path" : new StringDataType(),
-      "fileName" : new StringDataType(),
+      "CamelFileName" : new StringDataType(),
       "payload" : new StringDataType(),
       "password" : new StringDataType(),
       "disconnect" : new StringDataType()
