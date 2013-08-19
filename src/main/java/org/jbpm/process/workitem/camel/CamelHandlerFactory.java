@@ -1,5 +1,6 @@
 package org.jbpm.process.workitem.camel;
 
+import org.jbpm.process.workitem.camel.request.FTPRequestPayloadMapper;
 import org.jbpm.process.workitem.camel.request.RequestPayloadMapper;
 import org.jbpm.process.workitem.camel.uri.CXFURIMapper;
 import org.jbpm.process.workitem.camel.uri.FTPURIMapper;
@@ -11,15 +12,15 @@ import org.jbpm.process.workitem.camel.uri.XSLTURIMapper;
 public class CamelHandlerFactory {
 	
 	public static CamelHandler sftpHandler() {
-		return new CamelHandler(new FTPURIMapper("sftp"), new RequestPayloadMapper("payload"));
+		return new CamelHandler(new FTPURIMapper("sftp"), new FTPRequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler ftpHandler() {
-		return new CamelHandler(new FTPURIMapper("ftp"), new RequestPayloadMapper("payload"));
+		return new CamelHandler(new FTPURIMapper("ftp"), new FTPRequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler ftpsHandler() {
-		return new CamelHandler(new FTPURIMapper("ftps"), new RequestPayloadMapper("payload"));
+		return new CamelHandler(new FTPURIMapper("ftps"), new FTPRequestPayloadMapper("payload"));
 	}
 	
 	public static CamelHandler cxfHandler() {
